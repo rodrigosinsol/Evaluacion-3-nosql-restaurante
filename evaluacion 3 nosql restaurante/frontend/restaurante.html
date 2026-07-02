@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Registro Restaurantes</title>
+
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/brite.css">
+    <link rel="shortcut icon" href="./assets/images/medal_1178777.png" type="image/x-icon">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script src="./scripts/restaurante.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema Gestión Usuarios</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./formulario.html">Registro Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./restaurantes.html">Listado Restaurantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./restaurante.html">Registro Restaurantes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contenedor_principal container">
+        <form action="" id="formularioRestaurante">
+            <p class="h1">Formulario de Registro de Restaurante</p>
+            <hr>
+
+            <p class="h3">Datos del Restaurante</p>
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="selectUsuario">Usuario asociado:</label>
+                    <select class="form-select" name="usuario" id="selectUsuario"
+                        onchange="validarInput($(this))">
+                        <option value="" selected>Seleccione el usuario que registra la visita</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputNombre">Nombre del Restaurante:</label>
+                    <input class="form-control" type="text" name="nombre" id="inputNombre"
+                        onchange="validarInput($(this))">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputEspecialidad">Especialidad:</label>
+                    <input class="form-control" type="text" name="especialidad" id="inputEspecialidad"
+                        placeholder="Ej: Cocina Chilena, Comida Italiana..." onchange="validarInput($(this))">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputCiudad">Ciudad:</label>
+                    <input class="form-control" type="text" name="ciudad" id="inputCiudad"
+                        onchange="validarInput($(this))">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputDireccion">Dirección:</label>
+                    <input class="form-control" type="text" name="direccion" id="inputDireccion"
+                        onchange="validarInput($(this))">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputPuntuacion">Puntuación (1 a 5):</label>
+                    <input class="form-control" type="number" name="puntuacion" id="inputPuntuacion" min="1" max="5"
+                        onchange="validarPuntuacion($(this))">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputFechaVisita">Fecha de Visita:</label>
+                    <input class="form-control" type="date" name="fechaVisita" id="inputFechaVisita"
+                        onchange="validarFechaVisita($(this))">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="inputCostoPromedio">Costo Promedio ($):</label>
+                    <input class="form-control" type="number" name="costoPromedio" id="inputCostoPromedio" min="0"
+                        onchange="validarCostoPromedio($(this))">
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <label class="form-label" for="inputComentario">Comentario:</label>
+                    <textarea class="form-control" name="comentario" id="inputComentario" maxlength="300"
+                        rows="3"></textarea>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="recomendado" id="checkRecomendado"
+                            value="true">
+                        <label class="form-check-label" for="checkRecomendado">
+                            ¿Recomendarías este restaurante?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary me-2">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="validar_formulario_restaurante();">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
